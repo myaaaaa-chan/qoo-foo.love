@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <title>Qoo & Foo</title>
+
+    <link href="./bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
+    <style>
+      @-webkit-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-moz-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      body {
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      .padding {
+        padding-top: 10px;
+      }
+
+      .pointer {
+        cursor: pointer;
+      }
+
+      .fadeIn {
+        opacity: 0;
+        /* make things invisible upon start */
+        -webkit-animation: fadeIn ease-in 1;
+        /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+        -moz-animation: fadeIn ease-in 1;
+        animation: fadeIn ease-in 1;
+        -webkit-animation-fill-mode: forwards;
+        /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+        -moz-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        animation-duration: 1s;
+      }
+
+      .ProjectList {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .ProjectList .main-spinner {
+        margin-top: 15%;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .ProjectList .ProjectListItem {
+        height: 180px;
+        margin-top: 15px;
+        overflow: hidden;
+      }
+
+      .ProjectList .ProjectListItem:hover .name {
+        transition: all 0.9s ease;
+        opacity: 1;
+      }
+
+      .img-funky {
+        height: 100%;
+      }
+
+      .ProjectList .ProjectListItem:hover .img-funky {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .ProjectList .ProjectListItem .name {
+        opacity: 0;
+        background-color: rgba(217, 217, 217, 0.7);
+        margin-left: 91px;
+        text-align: center;
+        padding: 10px;
+        width: 79px;
+        color: rgba(0, 0, 0, 0.52);
+        display: block;
+        max-width: 100%;
+        position: absolute;
+        top: 67px;
+        border-radius: 5px;
+        font-size: 14pt;
+        line-height: 24px;
+      }
+
+      .img-funky {
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <h2>
+      <div class="mt-3"></div>
+      <p class="text-center">Qoo & Foo</p>
+    </h2>
+    <div id="root"></div>
+  </body>
+</html>
