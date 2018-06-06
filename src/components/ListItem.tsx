@@ -1,13 +1,46 @@
 import * as Q from 'q';
 import * as React from 'react';
+import * as ReactModal from 'react-modal';
 
 import {GalleryItem} from './GalleryItem';
 import loadingSpinner from './LoadingSpinner';
 
+const modalStyles = {
+  content: {
+    maxWidth: '90%',
+    maxHeight: '90%',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
 
-export class ListItem extends React.Component<{ imgUrl: string, url: string, Item: GalleryItem, key: number }, { isVisible: boolean }> {
+const imageStyles = {
+  maxWidth: '100%',
+  maxHeight: '100%'
+};
 
-  public state = {isVisible: false}
+interface IState {
+  isVisible: boolean;
+  modalIsOpen: boolean;
+}
+
+export class ListItem extends React.Component<{ imgUrl: string, url: string, Item: GalleryItem, key: number }, IState> {
+
+  public state: IState = {
+    isVisible: false,
+    modalIsOpen: false
+  }
+
+  constructor(props: any) {
+    super(props);
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
 
   public componentDidMount() {
     const state = this.state;
@@ -25,11 +58,14 @@ export class ListItem extends React.Component<{ imgUrl: string, url: string, Ite
     return <div className="col-lg-3 col-md-4 col-sm6 col-xs-12">
       <div className="ProjectListItem fadeIn">
         {!this.state.isVisible ? loadingSpinner :
-          <img src={this.props.imgUrl} className="img-responsive img-funky fadeIn"/>
+          <img src={this.props.imgUrl} className="img-responsive img-funky fadeIn" onClick={this.openModal}/>
         }
-        <a className="name" href={this.props.url} target="_blank">
-          <i className="fa fa-search"></i>
-        </a>
+        <ReactModal
+          isOpen={this.state.modalIsOpen}
+          style={modalStyles}
+        >
+          <img src={this.props.url} style={imageStyles} onClick={this.closeModal}/>
+        </ReactModal>
       </div>
     </div>
   }
@@ -46,5 +82,13 @@ export class ListItem extends React.Component<{ imgUrl: string, url: string, Ite
       d.resolve(e);
     }
     return d.promise;
+  }
+
+  private openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  private closeModal() {
+    this.setState({modalIsOpen: false});
   }
 }

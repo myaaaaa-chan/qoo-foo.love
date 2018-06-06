@@ -7,6 +7,7 @@
     "@webacad/env": "^1.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-modal": "^3.4.5",
     "react-scripts-ts": "2.16.0",
     "underscore": "^1.9.0"
   },
@@ -25,6 +26,7 @@
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
     "@types/react-lazyload": "^2.3.0",
+    "@types/react-modal": "^3.1.2",
     "@types/underscore": "^1.8.8",
     "async": "^2.6.1",
     "aws-sdk": "^2.249.1",
