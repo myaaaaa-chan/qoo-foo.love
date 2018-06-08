@@ -64,6 +64,8 @@ export class ListItem extends React.Component<{ imgUrl: string, url: string, Ite
           isOpen={this.state.modalIsOpen}
           style={modalStyles}
         >
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button"
+             data-show-count="false">Tweet</a>
           <img src={this.props.url} style={imageStyles} onClick={this.closeModal}/>
         </ReactModal>
       </div>

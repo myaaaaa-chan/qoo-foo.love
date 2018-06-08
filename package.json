@@ -4,11 +4,15 @@
   "private": true,
   "dependencies": {
     "@types/q": "^1.5.0",
+    "@types/request": "^2.47.0",
+    "@types/request-promise-native": "^1.0.15",
     "@webacad/env": "^1.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-modal": "^3.4.5",
     "react-scripts-ts": "2.16.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5",
     "underscore": "^1.9.0"
   },
   "scripts": {

@@ -1,35 +1,31 @@
-import * as AWS from 'aws-sdk';
+import * as request from "request";
 
 export class AwsS3Util {
-  public getBucketFileList = (callback: (fileNameList: string[]) => void): void => {
-    const fileNameList = new Array<string>();
+  public getBucketFileList = (callback: any): void => {
+    const url = "https://6itu4ykt3m.execute-api.ap-northeast-1.amazonaws.com/prod/images";
 
-    const accessKeyId = process.env.REACT_APP_ACCESS_KEY_ID || "";
-    const secretAccessKey = process.env.REACT_APP_SECRET_ACCESS_KEY || "";
+    const headers = {
+      "Content-Type": "application/json"
+    };
 
-    AWS.config.update({
-      region: 'ap-northeast-1',
-      credentials: new AWS.Credentials(accessKeyId, secretAccessKey)
-    });
+    // request options
+    const options = {
+      url,
+      method: 'GET',
+      headers,
+      withCredentials: false
+    };
 
-    const s3 = new AWS.S3({params: {Bucket: 'qoo-foo.love',}});
-    s3.listObjects(((err, data) => {
-      if (err != null) {
-        console.log(err);
-      } else {
-        if (data.Contents == null) {
-          return;
-        }
-
-        data.Contents.forEach((value, index, array) => {
-          if (value.Key! === "prod/") {
-            return;
-          }
-          fileNameList.push(value.Key!.toString());
-        });
-
-        callback(fileNameList);
+    request.get(options, ((err, res, body: string) => {
+      if (err) {
+        console.log('Error: ' + err.message);
+        return;
       }
+
+      const json = body;
+      const tmp = JSON.parse(JSON.parse(json));
+      const imgList = tmp.items.slice(1);
+      callback(imgList);
     }));
   }
 }
